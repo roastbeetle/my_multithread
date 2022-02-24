@@ -10,7 +10,7 @@ add_executable(mutex1 mutex1.cc)
 target_link_libraries(mutex1 PRIVATE Threads::Threads)
 
 add_executable(mutex2 mutex2.cc)
-target_link_libraries(mutex2 PRIVATE Threads::Threads
+target_link_libraries(mutex2 PRIVATE Threads::Threads)
 
 add_executable(mutex3 mutex3.cc)
 target_link_libraries(mutex3 PRIVATE Threads::Threads)
