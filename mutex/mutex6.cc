@@ -1,4 +1,5 @@
 /*
+lal
 Starting thread 1.
 Thread 1 adding 2. New value: 12.
 Starting thread 3.
