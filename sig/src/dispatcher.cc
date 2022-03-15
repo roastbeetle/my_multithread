@@ -1,19 +1,3 @@
-/*
-	dispatcher.cpp - Implementation of the Dispatcher class.
-	
-	Revision 0
-	
-	Features:
-			- 
-			
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws
-*/
-
-
 #include "dispatcher.h"
 
 #include <iostream>

@@ -1,19 +1,3 @@
-/*
-	worker.cpp - Implementation of the Worker class.
-	
-	Revision 0
-	
-	Features:
-			- 
-			
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws
-*/
-
-
 #include "worker.h"
 #include "dispatcher.h"
 

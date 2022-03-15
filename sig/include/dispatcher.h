@@ -1,16 +1,3 @@
-/*
-	dispatcher.h - header file for the Dispatcher class.
-	
-	Revision 0
-	
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws.
-*/
-
-
 #pragma once
 #ifndef DISPATCHER_H
 #define DISPATCHER_H

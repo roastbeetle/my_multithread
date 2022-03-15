@@ -1,18 +1,5 @@
-/*
-	request.cpp - implementation of the Request class.
-	
-	Revision 0
-	
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws
-*/
-
-
 #include "request.h"
-
+//value : thread number
 
 // --- PROCESS ---
 void Request::process() {
@@ -20,7 +7,6 @@ void Request::process() {
 	
 	//
 }
-
 
 // --- FINISH ---
 void Request::finish() {

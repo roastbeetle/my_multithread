@@ -1,16 +1,3 @@
-/*
-	worker.h - Header file for the Worker class.
-	
-	Revision 0
-	
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws
-*/
-
-
 #pragma once
 #ifndef WORKER_H
 #define WORKER_H

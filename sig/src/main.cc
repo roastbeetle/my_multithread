@@ -1,19 +1,3 @@
-/*
-	main.cpp - Main file for the Dispatcher demo application.
-	
-	Revision 0 
-	
-	Features:
-			- 
-			
-	Notes:
-			- 
-			
-	2016/11/19, Maya Posch
-	(c) Nyanko.ws
-*/
-
-
 #include "dispatcher.h"
 #include "request.h"
 
@@ -26,7 +10,7 @@
 using namespace std;
 
 
-// Globals
+// Global
 sig_atomic_t signal_caught = 0;
 mutex logMutex;
 
