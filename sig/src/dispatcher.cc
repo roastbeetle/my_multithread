@@ -13,13 +13,14 @@ vector<thread*> Dispatcher::threads;
 
 
 // --- INIT ---
-// 스레드에 worker 할당
+// 스레드에 worker 할당, request 대기
 bool Dispatcher::init(int workers) {
 	thread* t = 0;
 	Worker* w = 0;
 	for (int i = 0; i < workers; ++i) {
 		w = new Worker(i);
 		allWorkers.push_back(w);
+		// worker 실행 및 request 대기 
 		t = new thread(&Worker::run, w);
 		threads.push_back(t);
 	}
@@ -49,9 +50,8 @@ bool Dispatcher::stop() {
 
 // --- ADD REQUEST ---
 void Dispatcher::addRequest(AbstractRequest* request) {
-	// Check whether there's a worker available in the workers queue, else add
-	// the request to the requests queue.
 	workersMutex.lock();
+	// workers(대기큐) 에 worker 존재 하는 경우 request 할당
 	if (!workers.empty()) {
 		Worker* worker = workers.front();
 		worker->setRequest(request);
@@ -73,13 +73,12 @@ void Dispatcher::addRequest(AbstractRequest* request) {
 
 
 // --- ADD WORKER ---
+// worker : run 시점에서 실행, request 대기
 bool Dispatcher::addWorker(Worker* worker) {
-	// If a request is waiting in the requests queue, assign it to the worker.
-	// Else add the worker to the workers queue.
-	// Returns true if the worker was added to the queue and has to wait for
-	// its condition variable.
+
 	bool wait = true;
 	requestsMutex.lock();
+	// request 가 있을 경우 worker 에 할당
 	if (!requests.empty()) {
 		AbstractRequest* request = requests.front();
 		worker->setRequest(request);
@@ -87,12 +86,13 @@ bool Dispatcher::addWorker(Worker* worker) {
 		wait = false;
 		requestsMutex.unlock();
 	}
+	// request 없을 경우 workers(대기 큐) 에 worker 추가 
 	else {
 		requestsMutex.unlock();
 		workersMutex.lock();
 		workers.push(worker);
 		workersMutex.unlock();
 	}
-	
+	// 초기 Wait : True
 	return wait;
 }

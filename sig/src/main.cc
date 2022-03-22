@@ -32,6 +32,7 @@ int main() {
 	signal(SIGINT, &sigint_handler);
 	
 	// 10 Worker 스레드 할당 
+	// worker 대기 큐 (workers) 에 10개의 Worker 할당
 	Dispatcher::init(10);	
 	cout << "Initialised.\n";
 	
@@ -41,6 +42,7 @@ int main() {
 		rq = new Request(); 
 		rq->setValue(cycles);
 		rq->setOutput(&logFnc);
+		// 요청 대기 큐 (requests) 에 50개의 Request 할당
 		Dispatcher::addRequest(rq);
 		cycles++;
 	}

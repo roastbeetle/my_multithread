@@ -25,7 +25,9 @@ class Dispatcher {
 public:
 	static bool init(int workers);
 	static bool stop();
+	// 대기중인 worker 가 request 를 할당받음 ( 새로운 request 추가 )
 	static void addRequest(AbstractRequest* request);
+	// 대기중인 request 를 worker가 할당받음  ( 새로운 worker 추가 )
 	static bool addWorker(Worker* worker);
 };
 
