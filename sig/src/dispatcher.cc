@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace std;
 
-
 // Static initialisations.
 queue<AbstractRequest*> Dispatcher::requests;
 queue<Worker*> Dispatcher::workers;
@@ -14,12 +13,12 @@ vector<thread*> Dispatcher::threads;
 
 
 // --- INIT ---
-// Start the number of requested worker threads.
+// 스레드에 worker 할당
 bool Dispatcher::init(int workers) {
 	thread* t = 0;
 	Worker* w = 0;
 	for (int i = 0; i < workers; ++i) {
-		w = new Worker;
+		w = new Worker(i);
 		allWorkers.push_back(w);
 		t = new thread(&Worker::run, w);
 		threads.push_back(t);

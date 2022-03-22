@@ -17,9 +17,10 @@ class Worker {
 	AbstractRequest* request;
 	bool running;
 	bool ready;
+	int wnum;
 	
 public:
-	Worker() { running = true; ready = false; ulock = unique_lock<mutex>(mtx); }
+	Worker(int i) { running = true; ready = false; ulock = unique_lock<mutex>(mtx); wnum = i; }
 	void run();
 	void stop() { running = false; }
 	void setRequest(AbstractRequest* request) { this->request = request; ready = true; }

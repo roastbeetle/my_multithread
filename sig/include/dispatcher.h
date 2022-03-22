@@ -14,7 +14,8 @@ using namespace std;
 
 
 class Dispatcher {
-	static queue<AbstractRequest*> requests;
+	// Dispatcher : Worker, Thread 관리
+ 	static queue<AbstractRequest*> requests;
 	static queue<Worker*> workers;
 	static mutex requestsMutex;
 	static mutex workersMutex;

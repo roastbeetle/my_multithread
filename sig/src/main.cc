@@ -11,37 +11,34 @@ using namespace std;
 
 
 // Global
+// sig_atomic_t : signal 의 원자적 변수로 안전성 보장
 sig_atomic_t signal_caught = 0;
 mutex logMutex;
-
 
 void sigint_handler(int sig) {
 	signal_caught = 1;
 }
 
-
-void logFnc(string text) {
-	logMutex.lock();
+// 로그 출력 함수
+void logFnc(string text) { 
+	logMutex.lock(); 
 	cout << text << "\n";
 	logMutex.unlock();
 }
 
 
 int main() {
-	// Install signal handler.
+	// 시그널 핸들러 (sigint)
 	signal(SIGINT, &sigint_handler);
 	
-	// Initialise the dispatcher with 10 worker threads.
-	Dispatcher::init(10);
-	
+	// 10 Worker 스레드 할당 
+	Dispatcher::init(10);	
 	cout << "Initialised.\n";
 	
-	// Generate requests in a continuous loop until terminated with SIGINT or
-	// limit has been reached.
 	int cycles = 0;
 	Request* rq = 0;
 	while (!signal_caught && cycles < 50) {
-		rq = new Request();
+		rq = new Request(); 
 		rq->setValue(cycles);
 		rq->setOutput(&logFnc);
 		Dispatcher::addRequest(rq);
@@ -52,7 +49,7 @@ int main() {
 	
 	// Cleanup.
 	Dispatcher::stop();
-	cout << "Clean-up done.\n";
+	cout <<cycles<< "Clean-up done.\n";
 	
 	return 0;
 }
