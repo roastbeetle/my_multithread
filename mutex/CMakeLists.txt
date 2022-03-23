@@ -23,3 +23,6 @@ target_link_libraries(mutex5 PRIVATE Threads::Threads)
 
 add_executable(mutex6 mutex6.cc)
 target_link_libraries(mutex6 PRIVATE Threads::Threads)
+
+add_executable(mutex7 mutex7.cc)
+target_link_libraries(mutex7 PRIVATE Threads::Threads)

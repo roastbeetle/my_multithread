@@ -14,3 +14,6 @@ target_link_libraries(mthre2 PRIVATE Threads::Threads)
 
 add_executable(mthre3 mthre3.cc)
 target_link_libraries(mthre3 PRIVATE Threads::Threads)
+
+add_executable(mthre4 mthre4.cc)
+target_link_libraries(mthre4 PRIVATE Threads::Threads)
